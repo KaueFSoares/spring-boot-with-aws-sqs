@@ -6,3 +6,12 @@ spring:
     mongodb:
       uri: ${MONGO_URI}
       database: ${MONGO_DB}
+
+aws:
+  access:
+    key: ${AWS_ACCESS_KEY}
+    secret: ${AWS_SECRET_KEY}
+
+  sqs:
+    url: ${AWS_SQS_URL}
+    region: ${AWS_SQS_REGION}
