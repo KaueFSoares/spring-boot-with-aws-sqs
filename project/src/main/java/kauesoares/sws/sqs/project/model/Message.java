@@ -1,6 +1,7 @@
 package kauesoares.sws.sqs.project.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -21,6 +22,7 @@ public class Message {
     @Id
     private String id;
 
+    @JsonProperty("header")
     private Map<String, String> headers;
 
     private String body;
