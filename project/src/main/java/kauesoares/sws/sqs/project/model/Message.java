@@ -4,9 +4,9 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.http.HttpHeaders;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @Document(collection = "messages")
 @AllArgsConstructor
@@ -19,9 +19,11 @@ public class Message {
     @Id
     private String id;
 
-    private HttpHeaders headers;
+    private Map<String, String> headers;
 
     private String body;
+
+    private String queueMessageId;
 
     @CreatedDate
     private LocalDateTime createdAt;

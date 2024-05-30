@@ -14,7 +14,7 @@ public class MessageService {
 
     public void sendMessage(HttpHeaders headers, String body) {
         Message message = Message.builder()
-                .headers(headers)
+                .headers(headers.toSingleValueMap())
                 .body(body)
                 .build();
 
