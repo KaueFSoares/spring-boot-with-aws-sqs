@@ -25,7 +25,7 @@ public class Message {
     @JsonProperty("header")
     private Map<String, String> headers;
 
-    private String body;
+    private Map<String, Object> body;
 
     private String queueMessageId;
 

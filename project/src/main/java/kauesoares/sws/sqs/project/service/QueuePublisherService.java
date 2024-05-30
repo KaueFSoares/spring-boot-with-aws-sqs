@@ -22,7 +22,11 @@ public class QueuePublisherService {
 
     public String publishMessage(Message message) {
         try {
-            SendMessageResult result = this.amazonSQS.sendMessage(this.awssqsProperties.getUrl(), this.objectMapper.writeValueAsString(message));
+            String messageJson = this.objectMapper.writeValueAsString(message);
+
+            log.info("Publishing message to SQS: {}", messageJson);
+
+            SendMessageResult result = this.amazonSQS.sendMessage(this.awssqsProperties.getUrl(), messageJson);
 
             return result.getMessageId();
         } catch (Exception e) {
