@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: project
+
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+      database: ${MONGO_DB}
