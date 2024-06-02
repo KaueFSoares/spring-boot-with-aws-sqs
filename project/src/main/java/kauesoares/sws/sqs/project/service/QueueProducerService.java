@@ -4,7 +4,7 @@ import io.awspring.cloud.sqs.operations.SendResult;
 import io.awspring.cloud.sqs.operations.SqsOperations;
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import kauesoares.sws.sqs.project.config.properties.AWSSQSProperties;
-import kauesoares.sws.sqs.project.model.RawMessage;
+import kauesoares.sws.sqs.project.model.Message;
 import kauesoares.sws.sqs.project.util.ConversionUtils;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -27,17 +27,17 @@ public class QueueProducerService {
                 .buildSyncTemplate();
     }
 
-    public UUID publishMessage(RawMessage rawMessage) {
+    public UUID publishMessage(Message message) {
         try {
-            String messageJson = ConversionUtils.convertObjectToJson(rawMessage);
+            String messageJson = ConversionUtils.convertObjectToJson(message);
 
-            log.info("Publishing rawMessage to SQS: {}", messageJson);
+            log.info("Publishing message to SQS: {}", messageJson);
 
             SendResult<String> result = this.sqsTemplate.send(messageJson);
 
             return result.messageId();
         } catch (Exception e) {
-            log.error("Queue Exception RawMessage: {}", e.getMessage());
+            log.error("Queue Exception Message: {}", e.getMessage());
             return null;
         }
     }

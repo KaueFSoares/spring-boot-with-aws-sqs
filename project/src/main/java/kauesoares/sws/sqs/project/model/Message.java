@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.UUID;
 
 @Document(collection = "messages")
 @AllArgsConstructor
@@ -27,7 +28,7 @@ public class Message {
 
     private Map<String, Object> body;
 
-    private String queueMessageId;
+    private UUID queueMessageId;
 
     @CreatedDate
     private LocalDateTime createdAt;

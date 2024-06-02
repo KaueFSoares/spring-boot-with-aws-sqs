@@ -11,12 +11,13 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class MessageService {
 
-    private final QueuePublisherService queuePublisherService;
+    private final QueueProducerService queueProducerService;
 
     private final MessageRepository messageRepository;
 
@@ -29,7 +30,7 @@ public class MessageService {
                 .body(this.convertJsonToMap(body))
                 .build();
 
-        String queueMessageId = this.queuePublisherService.publishMessage(message);
+        UUID queueMessageId = this.queueProducerService.publishMessage(message);
 
         message.setQueueMessageId(queueMessageId);
 
