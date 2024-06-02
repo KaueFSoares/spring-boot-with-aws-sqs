@@ -33,7 +33,7 @@ public class QueueProducerService {
 
             log.info("Publishing message to SQS: {}", messageJson);
 
-            SendResult<String> result = this.sqsTemplate.send(messageJson);
+            SendResult<Message> result = this.sqsTemplate.send(message);
 
             return result.messageId();
         } catch (Exception e) {
