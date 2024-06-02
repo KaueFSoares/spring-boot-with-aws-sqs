@@ -11,8 +11,5 @@ import org.springframework.context.annotation.PropertySource;
 @Data
 public class AWSSQSProperties {
 
-    private String url;
-
-    private String region;
-
+    private String name;
 }
